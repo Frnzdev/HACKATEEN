@@ -36,7 +36,7 @@ export default function CountrySelector() {
     <div className="w-full max-w-md mx-auto">
       <Menu as="div" className="relative inline-block text-left w-full">
         <div>
-          <Menu.Button className="inline-flex justify-between w-full items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-black dark:text-white shadow-sm hover:bg-gray-50 dark:bg-zinc-950">
+          <Menu.Button className="inline-flex justify-between w-full items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-black dark:text-white shadow-sm hover:bg-gray-50 dark:hover:bg-black dark:bg-zinc-950">
             {selected ? (
               <div className="flex items-center space-x-2">
                 <Image
@@ -84,7 +84,7 @@ export default function CountrySelector() {
                     <button
                       onClick={() => setSelected(country)}
                       className={`${
-                        active ? "bg-gray-100" : ""
+                        active ? "bg-gray-100 dark:bg-black" : ""
                       } flex items-center w-full px-4 py-2 text-sm text-black dark:text-white`}
                     >
                       <Image
