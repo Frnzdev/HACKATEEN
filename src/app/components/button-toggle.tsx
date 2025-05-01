@@ -25,7 +25,7 @@ export default function ButtonToggle({ titulo }: ButtonProps) {
         <div className="flex justify-center absolute mt-2 right-0 w-48 bg-white dark:bg-zinc-800 shadow-lg rounded-md z-50">
           <ul className="text-black dark:text-white font-semibold p-2 space-y-2">
             <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
-              <Link href="/">Moeda</Link>
+              <Link href="#conversor">Moeda</Link>
             </li>
             <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
               <Link href="/">Temperatura</Link>
