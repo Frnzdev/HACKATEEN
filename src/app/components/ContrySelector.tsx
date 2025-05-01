@@ -36,7 +36,7 @@ export default function CountrySelector() {
     <div className="w-full max-w-md mx-auto">
       <Menu as="div" className="relative inline-block text-left w-full">
         <div>
-          <Menu.Button className="inline-flex justify-between w-full items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50">
+          <Menu.Button className="inline-flex justify-between w-full items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-black dark:text-white shadow-sm hover:bg-gray-50 dark:bg-zinc-950">
             {selected ? (
               <div className="flex items-center space-x-2">
                 <Image
@@ -76,7 +76,7 @@ export default function CountrySelector() {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute z-10 mt-2 w-full origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black/5 max-h-60 overflow-y-auto">
+          <Menu.Items className="absolute z-10 mt-2 w-full origin-top-right rounded-md bg-white text-black dark:bg-zinc-600 shadow-lg ring-1 ring-black/5 max-h-60 overflow-y-auto">
             <div className="py-1">
               {countries.map((country) => (
                 <Menu.Item key={country.code}>
@@ -85,7 +85,7 @@ export default function CountrySelector() {
                       onClick={() => setSelected(country)}
                       className={`${
                         active ? "bg-gray-100" : ""
-                      } flex items-center w-full px-4 py-2 text-sm text-gray-700`}
+                      } flex items-center w-full px-4 py-2 text-sm text-black dark:text-white`}
                     >
                       <Image
                         src={country.flag}

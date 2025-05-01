@@ -1,0 +1,99 @@
+"use client";
+
+import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
+import { useState } from "react";
+import { useGeolocation } from "react-use";
+
+const containerStyle = {
+  width: "100%",
+  height: "100%",
+  transition: "0.2s",
+};
+
+const noClickStyle = {
+  borderRadius: "8px",
+  width: "100%",
+  height: "100%",
+  transition: "0.2s",
+};
+
+export default function Mapa() {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
+  });
+
+  const { latitude, longitude } = useGeolocation();
+  const position =
+    latitude && longitude ? { lat: latitude, lng: longitude } : null;
+
+  const [isClick, setIsClicked] = useState(false);
+
+  const clickHandle = () => {
+    setIsClicked(!isClick);
+  };
+
+  if (!isLoaded || !position) {
+    return (
+      <section
+        id="localizacao"
+        className="flex items-center justify-center w-full h-screen bg-white"
+      >
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
+      </section>
+    );
+  }
+
+  return (
+    <section
+      id="localizacao"
+      className="bg-gradient-to-r from-white to-blue-400 w-full h-screen  dark:from-black dark:to-black/90"
+    >
+      {isClick ? (
+        <div className="relative w-full h-full">
+          <GoogleMap
+            onClick={() => clickHandle()}
+            mapContainerStyle={containerStyle}
+            center={position}
+            zoom={15}
+            options={{
+              disableDefaultUI: true,
+              zoomControl: true,
+            }}
+          >
+            <Marker position={position} />
+          </GoogleMap>
+        </div>
+      ) : (
+        <div className="pt-6 flex flex-col justify-center items-center">
+          <hr className="w-full border-t-1 border-white" />
+          <h1 className="font-bold text-2xl mt-2 mb-4">Veja onde você está:</h1>
+
+          {/* 🧠 Responsivo com Tailwind: muda tamanho do container conforme a tela */}
+          <div className="w-[400px] h-[400px] sm:w-[300px] sm:h-[300px] xs:w-[250px] xs:h-[250px]">
+            <GoogleMap
+              onClick={() => clickHandle()}
+              mapContainerStyle={noClickStyle}
+              center={position}
+              zoom={15}
+              options={{
+                disableDefaultUI: true,
+                zoomControl: true,
+              }}
+            >
+              <Marker position={position} />
+            </GoogleMap>
+          </div>
+
+          <div>
+            <p className="mt-6">
+              Você está em:{" "}
+              <strong>
+                {latitude} e {longitude}!
+              </strong>
+            </p>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import CountrySelector from "./ContrySelector";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
+import ThemeSwitcher from "./themeSwitcher";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,17 +13,19 @@ export default function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className="bg-blue-500 backdrop-blur-md p-4 shadow-md">
+    <header className="bg-blue-500 backdrop-blur-md p-4 shadow-md dark:bg-zinc-800 ">
       <div className="flex items-center justify-between">
         {/* Logo */}
         <div className="flex-shrink-0">
-          <Image
-            src="/Logo_Refugio.png"
-            alt="Logo"
-            width={100}
-            height={100}
-            className="max-w-full"
-          />
+          <Link href={"/"}>
+            <Image
+              src="/Logo_OK.png"
+              alt="Logo"
+              width={100}
+              height={100}
+              className="max-w-full"
+            />
+          </Link>
         </div>
 
         {/* Menu Mobile Toggle */}
@@ -78,11 +81,12 @@ export default function Header() {
             </SignedIn>
           </div>
         </div>
+        <ThemeSwitcher />
       </div>
 
       {/* Menu Mobile (Visível apenas em telas pequenas) */}
       {isMenuOpen && (
-        <div className="md:hidden bg-blue-600 p-4 space-y-4">
+        <div className="md:hidden bg-blue-300 border border-blue-950 rounded-md backdrop-blur p-4 space-y-4 dark:bg-zinc-600 dark:border-none">
           <ul className="text-white font-semibold">
             <li className="transition hover:underline hover:scale-110">
               <Link href="/">Início</Link>

@@ -3,11 +3,11 @@ import Image from "next/image";
 
 export default function NotFound() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-white to-blue-400 dark:from-black dark:to-black/90">
       {/* Logo */}
       <div className="mb-6">
         <Image
-          src="/Logo_Refugio.png"
+          src="/Logo_OK.png"
           alt="Logo Refugiados"
           width={150}
           height={150}
@@ -16,11 +16,11 @@ export default function NotFound() {
       </div>
 
       {/* Chave e mensagem de erro */}
-      <div className="bg-white p-6 rounded-xl shadow-lg w-full sm:w-96 text-center">
-        <h2 className="text-3xl font-bold text-red-500 mb-4">
+      <div className="bg-white p-6 rounded-xl shadow-lg w-full sm:w-96 text-center dark:bg-zinc-800">
+        <h2 className="text-3xl font-bold text-red-800 mb-4">
           404 - Not Found
         </h2>
-        <p className="text-gray-600 mb-6">
+        <p className="text-black dark:text-white mb-6">
           Could not find the requested resource
         </p>
         <Link

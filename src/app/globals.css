@@ -50,11 +50,21 @@
   box-sizing: border-box; /* Garantir que a largura total de cada elemento não ultrapasse a tela */
 }
 
+html,
 body {
-  overflow-x: hidden;
-  width: 100%;
-  background: white;
-  font-family: "Inter", Helvetica, sans-serif;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  overflow-y: scroll; /* permite rolar */
+  overflow-x: hidden; /* evita rolagem lateral */
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 :root {

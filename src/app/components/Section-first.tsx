@@ -1,9 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
+import ButtonToggle from "./button-toggle";
 
 export default function SectionFirst() {
   return (
-    <section className="w-full h-screen flex items-center justify-center px-6 overflow-hidden">
+    <section className="overflow-x-hidden w-full h-screen flex items-center bg-gradient-to-r from-white to-blue-400 justify-center px-6 dark:from-black dark:to-black/90">
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left max-w-6xl">
         {/* Texto */}
         <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
@@ -21,15 +22,14 @@ export default function SectionFirst() {
 
           {/* Botões abaixo do texto */}
           <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-            <Link href="#saiba-mais">
-              <button className="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">
-                Conversões
-              </button>
+            <Link href="">
+              <ButtonToggle titulo="Conversões" />
             </Link>
-            <Link href="#doar">
-              <button className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full hover:bg-gray-300">
-                Onde estou?
-              </button>
+            <Link
+              href="#localizacao"
+              className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full hover:bg-gray-300 text-center dark:bg-black/50 dark:text-white dark:border dark:border-white dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
+            >
+              Onde estou?
             </Link>
           </div>
         </div>
@@ -41,7 +41,7 @@ export default function SectionFirst() {
             alt="Celular na mão"
             width={400}
             height={400}
-            className="object-contain max-w-full h-auto" // Ajuste para evitar overflow
+            className="object-contain max-w-full h-auto"
           />
         </div>
       </div>
