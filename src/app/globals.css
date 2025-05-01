@@ -46,7 +46,13 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+* {
+  box-sizing: border-box; /* Garantir que a largura total de cada elemento não ultrapasse a tela */
+}
+
 body {
+  overflow-x: hidden;
+  width: 100%;
   background: white;
   font-family: "Inter", Helvetica, sans-serif;
 }

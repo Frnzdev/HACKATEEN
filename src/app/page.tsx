@@ -1,9 +1,9 @@
-import Header from "./components/Header";
+import SectionFirst from "./components/Section-first";
 
 export default function Home() {
   return (
     <div>
-      <Header />
+      <SectionFirst />
     </div>
   );
 }
