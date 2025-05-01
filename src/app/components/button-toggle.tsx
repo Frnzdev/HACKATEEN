@@ -28,10 +28,7 @@ export default function ButtonToggle({ titulo }: ButtonProps) {
               <Link href="#conversor">Moeda</Link>
             </li>
             <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
-              <Link href="/">Temperatura</Link>
-            </li>
-            <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
-              <Link href="/">Medidas</Link>
+              <Link href="#convert-all">Temperatura/ Medidas/ peso</Link>
             </li>
           </ul>
         </div>
