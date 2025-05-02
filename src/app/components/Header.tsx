@@ -74,7 +74,7 @@ export default function Header() {
                 <Link href="/">Início</Link>
               </li>
               <li className="transition hover:underline hover:scale-110">
-                <Link href="/">Notícias</Link>
+                <Link href="#news">Notícias</Link>
               </li>
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>

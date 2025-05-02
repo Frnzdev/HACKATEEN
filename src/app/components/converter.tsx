@@ -57,7 +57,7 @@ export default function Converter() {
     <>
       <section
         id="conversor"
-        className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-100 to-blue-300 dark:from-black dark:to-black/90 transition-colors duration-500"
+        className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-white to-blue-400 justify-center px-6 dark:from-black dark:to-black/90"
       >
         {/* Fundo com imagem em mobile */}
         <div className="absolute inset-0 md:hidden z-0">
@@ -166,7 +166,7 @@ export default function Converter() {
           {/* Imagem lateral em telas maiores */}
           <div className="hidden md:block md:w-1/2 lg:w-1/3 ml-10">
             <Image
-              src="/Money.png"
+              src="/teste.png"
               alt="Imagem ilustrativa do conversor"
               width={900}
               height={900}
