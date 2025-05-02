@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Image from "next/image";
 
 const currencies = [
   { code: "USD", name: "Dólar Americano" },
@@ -54,98 +55,123 @@ export default function Converter() {
 
   return (
     <>
-      <hr className="w-full border-t-1 border-white" />
-
       <section
         id="conversor"
-        className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-100 to-blue-300 dark:from-black dark:to-black/90 transition-colors duration-500"
+        className="relative min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-blue-100 to-blue-300 dark:from-black dark:to-black/90 transition-colors duration-500"
       >
-        <h1 className="flex justify-center font-bold mb-5 text-2xl">
-          TEM DINHEIRO E NÃO SABE QUANTO VALE?
+        {/* Fundo com imagem em mobile */}
+        <div className="absolute inset-0 md:hidden z-0">
+          <Image
+            src="/Money.png"
+            alt="Imagem de fundo dinheiro"
+            layout="fill"
+            objectFit="cover"
+            className="opacity-20 blur-sm"
+            priority
+          />
+        </div>
+
+        <h1 className="flex justify-center font-bold mb-5 text-2xl z-10 text-center px-4">
+          Tem dinheiro e não sabe quanto vale?
         </h1>
-        <div className="bg-white dark:bg-zinc-900 text-black dark:text-white rounded-2xl shadow-xl p-10 w-full max-w-lg">
-          <h1 className="text-3xl font-bold mb-6 text-center">
-            Conversor de Moedas
-          </h1>
-          <span className="flex text-gray-400 justify-center mb-4">
-            Descubra quanto dinheiro você tem no país escolhido
-          </span>
 
-          <div className="space-y-6">
-            <div>
-              <label htmlFor="amount" className="block font-medium mb-1">
-                Valor
-              </label>
-              <input
-                type="number"
-                id="amount"
-                value={amount}
-                onChange={(e) => setAmount(Number(e.target.value))}
-                className="w-full p-3 rounded-lg border border-gray-300  bg-gray-50focus:outline-none focus:ring-2 focus:ring-black dark:text-black dark:bg-gray-300"
-              />
-            </div>
+        <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-screen-xl px-6 z-10">
+          {/* Bloco do conversor */}
+          <div className="relative bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md text-black dark:text-white rounded-2xl shadow-xl p-10 w-full max-w-lg">
+            <h1 className="text-3xl font-bold mb-6 text-center">
+              Conversor de Moedas
+            </h1>
+            <span className="flex text-gray-400 justify-center mb-4 text-sm">
+              Descubra quanto dinheiro você tem no país escolhido
+            </span>
 
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <label htmlFor="from" className="block font-medium mb-1">
-                  De
+            <div className="space-y-6">
+              <div>
+                <label htmlFor="amount" className="block font-medium mb-1">
+                  Valor
                 </label>
-                <select
-                  id="from"
-                  value={from}
-                  onChange={(e) => setFrom(e.target.value)}
-                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:text-black dark:bg-gray-300"
-                >
-                  {currencies.map((currency) => (
-                    <option key={currency.code} value={currency.code}>
-                      {currency.code} - {currency.name}
-                    </option>
-                  ))}
-                </select>
+                <input
+                  type="number"
+                  id="amount"
+                  value={amount}
+                  onChange={(e) => setAmount(Number(e.target.value))}
+                  className="w-full p-3 rounded-lg border border-gray-300 bg-gray-50 focus:outline-none focus:ring-2 focus:ring-black dark:text-black dark:bg-gray-300"
+                />
               </div>
 
-              <div className="flex-1">
-                <label htmlFor="to" className="block font-medium mb-1">
-                  Para
-                </label>
-                <select
-                  id="to"
-                  value={to}
-                  onChange={(e) => setTo(e.target.value)}
-                  className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:text-black dark:bg-gray-300"
-                >
-                  {currencies.map((currency) => (
-                    <option key={currency.code} value={currency.code}>
-                      {currency.code} - {currency.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            <button
-              onClick={handleConvert}
-              disabled={loading}
-              className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 dark:border dark:border-white dark:bg-black dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
-            >
-              {loading ? (
-                <div className="flex justify-center items-center space-x-2">
-                  <div className="w-5 h-5 border-4 border-blue-700 border-t-transparent rounded-full animate-spin" />
-                  <span>Convertendo...</span>
+              <div className="flex gap-4">
+                <div className="flex-1">
+                  <label htmlFor="from" className="block font-medium mb-1">
+                    De
+                  </label>
+                  <select
+                    id="from"
+                    value={from}
+                    onChange={(e) => setFrom(e.target.value)}
+                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:text-black dark:bg-gray-300"
+                  >
+                    {currencies.map((currency) => (
+                      <option key={currency.code} value={currency.code}>
+                        {currency.code} - {currency.name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
-              ) : (
-                "Converter"
-              )}
-            </button>
 
-            {result !== null && (
-              <div className="text-center mt-6 text-xl font-medium">
-                {amount} {from} ={" "}
-                <span className="text-blue-600 dark:text-blue-400 font-bold">
-                  {result.toFixed(2)} {to}
-                </span>
+                <div className="flex-1">
+                  <label htmlFor="to" className="block font-medium mb-1">
+                    Para
+                  </label>
+                  <select
+                    id="to"
+                    value={to}
+                    onChange={(e) => setTo(e.target.value)}
+                    className="w-full p-3 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:text-black dark:bg-gray-300"
+                  >
+                    {currencies.map((currency) => (
+                      <option key={currency.code} value={currency.code}>
+                        {currency.code} - {currency.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
               </div>
-            )}
+
+              <button
+                onClick={handleConvert}
+                disabled={loading}
+                className="w-full bg-blue-600 text-white py-3 rounded-lg font-semibold hover:bg-blue-700 dark:border dark:border-white dark:bg-black dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
+              >
+                {loading ? (
+                  <div className="flex justify-center items-center space-x-2">
+                    <div className="w-5 h-5 border-4 border-blue-700 border-t-transparent rounded-full animate-spin" />
+                    <span>Convertendo...</span>
+                  </div>
+                ) : (
+                  "Converter"
+                )}
+              </button>
+
+              {result !== null && (
+                <div className="text-center mt-6 text-xl font-medium">
+                  {amount} {from} ={" "}
+                  <span className="text-blue-600 dark:text-blue-400 font-bold">
+                    {result.toFixed(2)} {to}
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Imagem lateral em telas maiores */}
+          <div className="hidden md:block md:w-1/2 lg:w-1/3 ml-10">
+            <Image
+              src="/Money.png"
+              alt="Imagem ilustrativa do conversor"
+              width={900}
+              height={900}
+              className="object-contain max-w-full h-auto rounded-lg"
+            />
           </div>
         </div>
       </section>

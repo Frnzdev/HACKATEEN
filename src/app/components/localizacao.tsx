@@ -65,7 +65,6 @@ export default function Mapa() {
         </div>
       ) : (
         <div className="pt-6 flex flex-col justify-center items-center">
-          <hr className="w-full border-t-1 border-white" />
           <h1 className="font-bold text-2xl mt-2 mb-4">Veja onde você está:</h1>
 
           {/* 🧠 Responsivo com Tailwind: muda tamanho do container conforme a tela */}

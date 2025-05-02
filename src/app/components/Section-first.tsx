@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import ButtonToggle from "./button-toggle";
 
 export default function SectionFirst() {
   return (
@@ -22,14 +21,23 @@ export default function SectionFirst() {
 
           {/* Botões abaixo do texto */}
           <div className="flex flex-col md:flex-row gap-4 justify-center md:justify-start">
-            <Link href="">
-              <ButtonToggle titulo="Conversões" />
+            <Link
+              href="#conversor"
+              className="bg-blue-800 text-white px-6 py-2 rounded-full hover:bg-blue-500 text-center dark:bg-black/50 dark:text-white dark:border dark:border-white dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
+            >
+              Conversão
             </Link>
             <Link
               href="#localizacao"
               className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full hover:bg-gray-300 text-center dark:bg-black/50 dark:text-white dark:border dark:border-white dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
             >
               Onde estou?
+            </Link>
+            <Link
+              href="#informacoes  "
+              className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full hover:bg-gray-300 text-center dark:bg-black/50 dark:text-white dark:border dark:border-white dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
+            >
+              Informações
             </Link>
           </div>
         </div>

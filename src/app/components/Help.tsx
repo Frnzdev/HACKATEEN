@@ -1,0 +1,44 @@
+"use client";
+import { useState } from "react";
+import { Info, Phone } from "lucide-react"; // ou use react-icons se preferir
+
+export default function Help() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const OpenMenu = () => setIsOpen(!isOpen);
+
+  return (
+    <>
+      {/* Bolinha fixa no canto inferior direito */}
+      <div className="flex items-center">
+        <button
+          onClick={OpenMenu}
+          className="fixed duration-200 bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-lg z-50 flex items-center space-x-2"
+          aria-label="Ajuda"
+        >
+          <Phone size={24} />
+          <Info size={24} />
+        </button>
+      </div>
+
+      {isOpen && (
+        <div className="fixed bottom-20 right-6 w-72 bg-white dark:bg-zinc-600 shadow-xl rounded-lg z-50">
+          <h2 className="m-4 font-bold text-black dark:text-white">
+            EM CASO DE EMERGÊNCIA LIGUE:
+          </h2>
+          <ul className="text-black dark:text-white font-semibold px-4 pb-4 space-y-2">
+            <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
+              190: Polícia Militar
+            </li>
+            <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
+              192: SAMU (Ambulância)
+            </li>
+            <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
+              193: Corpo de Bombeiros
+            </li>
+          </ul>
+        </div>
+      )}
+    </>
+  );
+}

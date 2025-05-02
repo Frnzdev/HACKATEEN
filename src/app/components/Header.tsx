@@ -37,7 +37,13 @@ export default function Header() {
             {/* Linha com UserButton e botão de menu logo abaixo */}
             <div className="flex items-center space-x-4">
               <SignedIn>
-                <UserButton />
+                <UserButton
+                  appearance={{
+                    elements: {
+                      userButtonAvatarBox: "w-12 h-12", // tamanho aumentado
+                    },
+                  }}
+                />
               </SignedIn>
 
               <button
@@ -81,17 +87,18 @@ export default function Header() {
               </li>
             </ul>
 
-            {/* Country Selector */}
-            <div className="flex items-center">
+            {/* Country Selector + Theme Switcher */}
+            <div className="flex items-center space-x-4">
               <CountrySelector />
+              <div className="p-4">
+                <ThemeSwitcher />
+              </div>
             </div>
 
-            {/* Auth buttons */}
-            <div>
-              <SignedIn>
-                <UserButton />
-              </SignedIn>
-            </div>
+            {/* User Button */}
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
           </div>
         </div>
 
