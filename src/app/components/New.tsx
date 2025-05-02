@@ -2,13 +2,22 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const API_KEY = "9f0559e983de46e2bb4613d48628ed55"; // Substitua com sua chave da News API
+// Definir o tipo Article com os campos usados pela News API
+type Article = {
+  title: string;
+  description: string;
+  urlToImage: string;
+  url: string;
+};
 
-const fetchNews = async () => {
+const API_KEY = "9f0559e983de46e2bb4613d48628ed55";
+
+// Função para buscar as notícias usando a News API
+const fetchNews = async (): Promise<Article[]> => {
   const url = `https://newsapi.org/v2/everything?q=refugiados&apiKey=${API_KEY}`;
   const response = await fetch(url);
   const data = await response.json();
-  const articles = data.articles;
+  const articles = data.articles as Article[];
 
   // Extrair domínios das URLs de imagem
   const domains = articles
@@ -21,8 +30,9 @@ const fetchNews = async () => {
 };
 
 export default function News() {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<Article[]>([]);
 
+  // Carregar as notícias ao montar o componente
   useEffect(() => {
     const getArticles = async () => {
       const news = await fetchNews();
