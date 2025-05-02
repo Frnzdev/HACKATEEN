@@ -80,8 +80,8 @@ export default function MedidaConverter() {
   const handleTypeChange = (val: keyof typeof units) => {
     setType(val);
     const [first, second] = Object.keys(units[val].units);
-    setFrom(first as keyof (typeof units)["length"]["units"]);
-    setTo(second as keyof (typeof units)["length"]["units"]);
+    setFrom(first as keyof (typeof units)[typeof val]["units"]);
+    setTo(second as keyof (typeof units)[typeof val]["units"]);
   };
 
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -138,7 +138,7 @@ export default function MedidaConverter() {
                 value={from}
                 onChange={(e) =>
                   setFrom(
-                    e.target.value as keyof (typeof units)["length"]["units"]
+                    e.target.value as keyof (typeof units)[typeof type]["units"]
                   )
                 }
                 className="w-full border rounded-md p-2 dark:bg-zinc-800 dark:text-white"
@@ -154,7 +154,7 @@ export default function MedidaConverter() {
                 value={to}
                 onChange={(e) =>
                   setTo(
-                    e.target.value as keyof (typeof units)["length"]["units"]
+                    e.target.value as keyof (typeof units)[typeof type]["units"]
                   )
                 }
                 className="w-full border rounded-md p-2 dark:bg-zinc-800 dark:text-white"
