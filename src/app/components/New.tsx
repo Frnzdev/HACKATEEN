@@ -10,7 +10,7 @@ type Article = {
   url: string;
 };
 
-const API_KEY = "9f0559e983de46e2bb4613d48628ed55";
+const API_KEY = process.env.NEWS_API_KEY;
 
 // Função para buscar as notícias usando a News API
 const fetchNews = async (): Promise<Article[]> => {
