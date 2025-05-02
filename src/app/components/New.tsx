@@ -2,37 +2,26 @@
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-// Definir o tipo Article com os campos usados pela News API
+// Defina o tipo Article com os campos usados pela NewsData.io
 type Article = {
   title: string;
   description: string;
-  urlToImage: string;
-  url: string;
+  image_url: string;
+  link: string;
 };
 
-const API_KEY = process.env.NEWS_API_KEY;
+const API_KEY = process.env.NEXT_PUBLIC_NEWSDATA_API_KEY; // Certifique-se de definir esta variável de ambiente
 
-// Função para buscar as notícias usando a News API
 const fetchNews = async (): Promise<Article[]> => {
-  const url = `https://newsapi.org/v2/everything?q=refugiados&apiKey=${API_KEY}`;
+  const url = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=refugiados&language=pt`;
   const response = await fetch(url);
   const data = await response.json();
-  const articles = data.articles as Article[];
-
-  // Extrair domínios das URLs de imagem
-  const domains = articles
-    .map((article) => new URL(article.urlToImage).hostname)
-    .filter((hostname, index, self) => self.indexOf(hostname) === index); // Remover duplicados
-
-  console.log(domains); // Exibir todos os domínios encontrados
-
-  return articles;
+  return data.results as Article[];
 };
 
 export default function News() {
   const [articles, setArticles] = useState<Article[]>([]);
 
-  // Carregar as notícias ao montar o componente
   useEffect(() => {
     const getArticles = async () => {
       const news = await fetchNews();
@@ -56,9 +45,9 @@ export default function News() {
             key={index}
             className="news-item bg-white p-5 rounded-lg shadow-lg dark:bg-zinc-800 dark:text-white overflow-hidden transform hover:scale-105 transition-all duration-200"
           >
-            {article.urlToImage && (
+            {article.image_url && (
               <Image
-                src={article.urlToImage}
+                src={article.image_url}
                 alt={article.title}
                 width={300}
                 height={300}
@@ -72,7 +61,7 @@ export default function News() {
               {article.description}
             </p>
             <a
-              href={article.url}
+              href={article.link}
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-600 hover:underline dark:text-blue-400"

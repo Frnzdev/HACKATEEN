@@ -1,8 +1,7 @@
 "use client";
 
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
-import { useState } from "react";
-import { useGeolocation } from "react-use";
+import { useEffect, useState } from "react";
 
 const containerStyle = {
   width: "100%",
@@ -22,11 +21,28 @@ export default function Mapa() {
     googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY || "",
   });
 
-  const { latitude, longitude } = useGeolocation();
-  const position =
-    latitude && longitude ? { lat: latitude, lng: longitude } : null;
-
+  const [position, setPosition] = useState<{ lat: number; lng: number } | null>(
+    null
+  );
   const [isClick, setIsClicked] = useState(false);
+
+  // Obtém localização automaticamente ao carregar
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setPosition({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude,
+          });
+        },
+        (err) => {
+          console.error("Erro ao obter localização:", err);
+        },
+        { enableHighAccuracy: true }
+      );
+    }
+  }, []);
 
   const clickHandle = () => {
     setIsClicked(!isClick);
@@ -46,12 +62,12 @@ export default function Mapa() {
   return (
     <section
       id="localizacao"
-      className="bg-gradient-to-r from-white to-blue-400 w-full h-screen  dark:from-black dark:to-black/90"
+      className="bg-gradient-to-r from-white to-blue-400 w-full h-screen dark:from-black dark:to-black/90"
     >
       {isClick ? (
         <div className="relative w-full h-full">
           <GoogleMap
-            onClick={() => clickHandle()}
+            onClick={clickHandle}
             mapContainerStyle={containerStyle}
             center={position}
             zoom={15}
@@ -67,10 +83,9 @@ export default function Mapa() {
         <div className="pt-6 flex flex-col justify-center items-center">
           <h1 className="font-bold text-2xl mt-2 mb-4">Veja onde você está:</h1>
 
-          {/* 🧠 Responsivo com Tailwind: muda tamanho do container conforme a tela */}
           <div className="w-[400px] h-[400px] sm:w-[300px] sm:h-[300px] xs:w-[250px] xs:h-[250px]">
             <GoogleMap
-              onClick={() => clickHandle()}
+              onClick={clickHandle}
               mapContainerStyle={noClickStyle}
               center={position}
               zoom={15}
@@ -87,7 +102,7 @@ export default function Mapa() {
             <p className="mt-6">
               Você está em:{" "}
               <strong>
-                {latitude} e {longitude}!
+                {position.lat} e {position.lng}!
               </strong>
             </p>
           </div>
