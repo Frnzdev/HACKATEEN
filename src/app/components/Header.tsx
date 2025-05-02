@@ -21,9 +21,10 @@ export default function Header() {
             <Link href={"/"}>
               <Image
                 src="/Logo_OK.png"
-                alt="Logo"
                 width={100}
                 height={100}
+                style={{ width: "100%", height: "auto" }}
+                alt="Logo"
                 className="max-w-full"
               />
             </Link>

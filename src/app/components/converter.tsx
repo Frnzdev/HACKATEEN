@@ -166,11 +166,11 @@ export default function Converter() {
           {/* Imagem lateral em telas maiores */}
           <div className="hidden md:block md:w-1/2 lg:w-1/3 ml-10">
             <Image
-              src="/teste.png"
-              alt="Imagem ilustrativa do conversor"
+              src="/Money.png"
               width={900}
               height={900}
-              className="object-contain max-w-full h-auto rounded-lg"
+              style={{ height: "auto", width: "100%" }} // ou fixe com px/rem se quiser tamanho fixo
+              alt="Ícone de dinheiro"
             />
           </div>
         </div>
