@@ -51,7 +51,7 @@ const units = {
     units: { C: "Celsius", F: "Fahrenheit", K: "Kelvin" },
     convert: (value: number, from: string, to: string) => {
       if (from === to) return value;
-      let celsius =
+      const celsius =
         from === "C"
           ? value
           : from === "F"
@@ -66,27 +66,30 @@ const units = {
   },
 };
 
+type UnitType = keyof typeof units;
+type UnitKey<T extends UnitType> = keyof (typeof units)[T]["units"];
+
 export default function MedidaConverter() {
-  const [type, setType] = useState<keyof typeof units>("length");
-  const [from, setFrom] =
-    useState<keyof (typeof units)["length"]["units"]>("m");
-  const [to, setTo] = useState<keyof (typeof units)["length"]["units"]>("cm");
+  const [type, setType] = useState<UnitType>("length");
+  const [from, setFrom] = useState<UnitKey<UnitType>>("m" as UnitKey<UnitType>);
+  const [to, setTo] = useState<UnitKey<typeof type>>(
+    "cm" as UnitKey<typeof type>
+  );
   const [value, setValue] = useState<string>("");
 
   const result = value
     ? units[type].convert(parseFloat(value), from, to).toFixed(4)
     : "";
 
-  const handleTypeChange = (val: keyof typeof units) => {
+  const handleTypeChange = (val: UnitType) => {
     setType(val);
     const [first, second] = Object.keys(units[val].units);
-    setFrom(first as keyof (typeof units)[typeof val]["units"]);
-    setTo(second as keyof (typeof units)[typeof val]["units"]);
+    setFrom(first as UnitKey<typeof val>);
+    setTo(second as UnitKey<typeof val>);
   };
 
   const handleValueChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.target.value;
-    // Valida para garantir que o valor é um número ou vazio
     if (inputValue === "" || !isNaN(Number(inputValue))) {
       setValue(inputValue);
     }
@@ -113,9 +116,7 @@ export default function MedidaConverter() {
           <div className="space-y-4">
             <select
               value={type}
-              onChange={(e) =>
-                handleTypeChange(e.target.value as keyof typeof units)
-              }
+              onChange={(e) => handleTypeChange(e.target.value as UnitType)}
               className="w-full border rounded-md p-2 dark:bg-zinc-800 dark:text-white"
             >
               {Object.entries(units).map(([key, data]) => (
@@ -137,9 +138,7 @@ export default function MedidaConverter() {
               <select
                 value={from}
                 onChange={(e) =>
-                  setFrom(
-                    e.target.value as keyof (typeof units)[typeof type]["units"]
-                  )
+                  setFrom(e.target.value as UnitKey<typeof type>)
                 }
                 className="w-full border rounded-md p-2 dark:bg-zinc-800 dark:text-white"
               >
@@ -152,11 +151,7 @@ export default function MedidaConverter() {
 
               <select
                 value={to}
-                onChange={(e) =>
-                  setTo(
-                    e.target.value as keyof (typeof units)[typeof type]["units"]
-                  )
-                }
+                onChange={(e) => setTo(e.target.value as UnitKey<typeof type>)}
                 className="w-full border rounded-md p-2 dark:bg-zinc-800 dark:text-white"
               >
                 {Object.entries(units[type].units).map(([key, label]) => (
