@@ -1,3 +1,4 @@
+import MedidaConverter from "./components/all-converter";
 import Converter from "./components/converter";
 
 import Info from "./components/Info";
@@ -10,6 +11,7 @@ export default function Home() {
     <div>
       <SectionFirst />
       <Converter />
+      <MedidaConverter />
       <Mapa />
       <Info />
     </div>
