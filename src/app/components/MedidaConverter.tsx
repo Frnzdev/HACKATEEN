@@ -98,7 +98,7 @@ export default function MedidaConverter() {
   return (
     <section
       id="medidas"
-      className="min-h-screen flex flex-col items-center justify-center bg-white dark:bg-black px-6 py-8"
+      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-r from-white to-blue-400 px-6 dark:from-black dark:to-black/90"
     >
       <h1 className="font-bold mb-5 text-2xl text-center">
         Precisa converter alguma medida?

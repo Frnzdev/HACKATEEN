@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import ButtonLink from "./Button";
 
 export default function SectionFirst() {
   const [isOpen, setIsOpen] = useState(false);
@@ -67,7 +68,6 @@ export default function SectionFirst() {
                     <li>
                       <Link
                         href="#conversor"
-                        onClick={() => setIsOpen(false)}
                         className="block w-full text-left px-4 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-zinc-800 text-gray-700 dark:text-white"
                       >
                         Conversor de Moeda
@@ -76,7 +76,6 @@ export default function SectionFirst() {
                     <li>
                       <Link
                         href="#medidas"
-                        onClick={() => setIsOpen(false)}
                         className="block w-full text-left px-4 py-2 rounded-md hover:bg-blue-100 dark:hover:bg-zinc-800 text-gray-700 dark:text-white"
                       >
                         Temperatura, Peso e Comprimento
@@ -86,19 +85,8 @@ export default function SectionFirst() {
                 </div>
               )}
             </div>
-
-            <Link
-              href="#localizacao"
-              className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full hover:bg-gray-300 text-center dark:bg-black/50 dark:text-white dark:border dark:border-white dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
-            >
-              Onde estou?
-            </Link>
-            <Link
-              href="#informacoes"
-              className="bg-gray-200 text-gray-800 px-6 py-2 rounded-full hover:bg-gray-300 text-center dark:bg-black/50 dark:text-white dark:border dark:border-white dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
-            >
-              Informações
-            </Link>
+            <ButtonLink linkRoute="#localizacao" linkTitle="Onde estou?" />
+            <ButtonLink linkRoute="#informacoes" linkTitle="Informações" />
           </div>
         </div>
 

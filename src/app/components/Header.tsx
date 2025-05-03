@@ -6,6 +6,7 @@ import CountrySelector from "./ContrySelector";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
 import ThemeSwitcher from "./themeSwitcher";
+import ListaLi from "./ListaLi";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,12 +72,8 @@ export default function Header() {
           {/* Menu para telas grandes */}
           <div className="hidden md:flex items-center space-x-6">
             <ul className="flex space-x-6 text-white font-semibold p-2">
-              <li className="transition hover:underline hover:scale-110">
-                <Link href="/">Início</Link>
-              </li>
-              <li className="transition hover:underline hover:scale-110">
-                <Link href="#news">Notícias</Link>
-              </li>
+              <ListaLi linkRoute="/" liTitle="Início" />
+              <ListaLi linkRoute="#news" liTitle="Noticías" />
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">
@@ -107,12 +104,8 @@ export default function Header() {
         {isMenuOpen && (
           <div className="md:hidden bg-blue-300 border border-blue-950 rounded-md backdrop-blur p-4 space-y-4 dark:bg-zinc-600 dark:border-none">
             <ul className="text-white font-semibold">
-              <li className="transition hover:underline hover:scale-110">
-                <Link href="/">Início</Link>
-              </li>
-              <li className="transition hover:underline hover:scale-110">
-                <Link href="/">Notícias</Link>
-              </li>
+              <ListaLi linkRoute="/" liTitle="Início" />
+              <ListaLi linkRoute="#news" liTitle="Noticías" />
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">
@@ -128,8 +121,6 @@ export default function Header() {
             <div className="flex items-center">
               <CountrySelector />
             </div>
-
-            {/* Auth user button */}
           </div>
         )}
       </header>

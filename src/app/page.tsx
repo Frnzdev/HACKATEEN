@@ -1,4 +1,4 @@
-import MedidaConverter from "./components/all-converter";
+import MedidaConverter from "./components/MedidaConverter";
 import Converter from "./components/converter";
 
 import Info from "./components/Info";
