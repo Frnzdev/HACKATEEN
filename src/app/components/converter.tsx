@@ -67,17 +67,24 @@ export default function Converter() {
             layout="fill"
             objectFit="cover"
             className="opacity-20 blur-sm"
+            data-aos="fade-up-left"
             priority
           />
         </div>
 
-        <h1 className="flex justify-center font-bold mb-5 text-2xl z-10 text-center px-4">
+        <h1
+          data-aos="fade-up-left"
+          className="flex justify-center font-bold mb-5 text-2xl z-10 text-center px-4"
+        >
           Tem dinheiro e não sabe quanto vale?
         </h1>
 
         <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-screen-xl px-6 z-10">
           {/* Bloco do conversor */}
-          <div className="relative bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md text-black dark:text-white rounded-2xl shadow-xl p-10 w-full max-w-lg">
+          <div
+            data-aos="fade-up-left"
+            className="relative bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md text-black dark:text-white rounded-2xl shadow-xl p-10 w-full max-w-lg"
+          >
             <h1 className="text-3xl font-bold mb-6 text-center">
               Conversor de Moedas
             </h1>

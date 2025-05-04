@@ -32,14 +32,18 @@ export default function SectionFirst() {
     };
   }, [isOpen]);
 
+  //mudar idioma
+
   return (
     <section className="overflow-x-hidden w-full min-h-screen flex items-center bg-gradient-to-r from-white to-blue-400 justify-center px-6 dark:from-black dark:to-black/90">
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 text-center md:text-left max-w-6xl">
         {/* Texto */}
-        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start">
+        <div
+          data-aos="fade-right"
+          className="w-full md:w-1/2 flex flex-col items-center md:items-start"
+        >
           <h1 className="text-3xl font-bold mb-4">Juntos por um Recomeço</h1>
           <p className="text-lg leading-relaxed mb-6">
-            Somos uma iniciativa que oferece apoio a pessoas refugiadas,
             <br />
             ajudando na adaptação, integração e construção de uma nova vida com
             dignidade.
@@ -85,13 +89,17 @@ export default function SectionFirst() {
                 </div>
               )}
             </div>
+
             <ButtonLink linkRoute="#localizacao" linkTitle="Onde estou?" />
             <ButtonLink linkRoute="#informacoes" linkTitle="Informações" />
           </div>
         </div>
 
         {/* Imagem visível apenas em telas md+ */}
-        <div className="hidden md:flex w-full md:w-1/2 justify-center">
+        <div
+          data-aos="fade-left"
+          className="hidden md:flex w-full md:w-1/2 justify-center"
+        >
           <Image
             src="/Celular.png"
             alt="Celular na mão"

@@ -7,6 +7,7 @@ import Help from "./components/Help";
 import { ClerkProvider } from "@clerk/nextjs";
 import ThemeProvider from "./providers/theme-provider";
 import BackToTopButton from "./components/BackUp";
+import { AosInit } from "./components/aos-init";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -39,6 +40,7 @@ export default function RootLayout({
             <Header />
             <BackToTopButton />
             {children}
+            <AosInit />
             <Footer />
           </ThemeProvider>
         </ClerkProvider>
