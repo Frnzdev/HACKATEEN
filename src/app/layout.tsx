@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+// app/layout.tsx (ou o seu arquivo layout)
+import { ClerkProvider } from "@clerk/nextjs";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
-import Footer from "./Footer";
+import Footer from "./components/Footer";
 import Help from "./components/Help";
-import { ClerkProvider } from "@clerk/nextjs";
 import ThemeProvider from "./providers/theme-provider";
 import BackToTopButton from "./components/BackUp";
 import { AosInit } from "./components/aos-init";
@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "L.A.R",
   description: "Lugar de Acolhimento e Recomeço",
   icons: {

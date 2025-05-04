@@ -1,5 +1,5 @@
 "use client";
-
+import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import CountrySelector from "./ContrySelector";
@@ -10,7 +10,7 @@ import ListaLi from "./ListaLi";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+  const { isSignedIn } = useUser();
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
@@ -83,6 +83,9 @@ export default function Header() {
                   </SignInButton>
                 </SignedOut>
               </li>
+              <li className="transition hover:underline hover:scale-110">
+                {isSignedIn && <Link href="/restricted">Área Restrita</Link>}
+              </li>
             </ul>
 
             {/* Country Selector + Theme Switcher */}
@@ -114,6 +117,9 @@ export default function Header() {
                     </span>
                   </SignInButton>
                 </SignedOut>
+              </li>
+              <li className="transition hover:underline hover:scale-110">
+                {isSignedIn && <Link href="/restricted">Área Restrita</Link>}
               </li>
             </ul>
 
