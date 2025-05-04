@@ -65,7 +65,10 @@ export default function News() {
           Nenhuma notícia encontrada.
         </p>
       ) : (
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div
+          data-aos="fade-up"
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+        >
           {articles.map((article, index) => (
             <div
               key={index}
