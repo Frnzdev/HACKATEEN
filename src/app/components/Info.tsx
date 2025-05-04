@@ -39,7 +39,7 @@ export default function Info() {
               <li>
                 <Link
                   className="hover:underline"
-                  href="https://www.imdh.org.br"
+                  href="https://www.migrante.org.br/"
                   target="_blank"
                 >
                   🌍 Instituto Migrações e Direitos Humanos (IMDH)
@@ -66,7 +66,7 @@ export default function Info() {
               <li>
                 <Link
                   className="hover:underline"
-                  href="https://www.trabalhador.com"
+                  href="https://cate.prefeitura.sp.gov.br/o-cate/"
                   target="_blank"
                 >
                   🏭 Centros de Apoio ao Trabalhador (CATs)
@@ -75,7 +75,7 @@ export default function Info() {
               <li>
                 <Link
                   className="hover:underline"
-                  href="https://www.empregarrefugiados.com"
+                  href="https://www.empresascomrefugiados.com.br/contratacao"
                   target="_blank"
                 >
                   💼 Empresas com projetos de inclusão
@@ -93,7 +93,7 @@ export default function Info() {
               <li>
                 <Link
                   className="hover:underline"
-                  href="https://www.cursoscapacita.com"
+                  href="https://cate.prefeitura.sp.gov.br/cursos/"
                   target="_blank"
                 >
                   🛠️ Cursos de capacitação com vagas de emprego
@@ -120,7 +120,7 @@ export default function Info() {
               <li>
                 <Link
                   className="hover:underline"
-                  href="https://www.portuguesgratis.com.br"
+                  href="https://www.pensarcursos.com.br/curso/basico-de-portugues?utm_source=google&utm_medium=&utm_campaign=21937447105&utm_content=&utm_term=&gad_source=1&gbraid=0AAAAAD3Ezt14k940vUFRyDP03FymDM6Uw&gclid=Cj0KCQjw_dbABhC5ARIsAAh2Z-Srdl2xRzIASIvhh--tH2YdKB-zWmwDyorGBM7vvTTHobHxFZVmmGMaAsBIEALw_wcB"
                   target="_blank"
                 >
                   🧑‍🏫 Cursos de português gratuitos
@@ -129,7 +129,7 @@ export default function Info() {
               <li>
                 <Link
                   className="hover:underline"
-                  href="https://www.programasbolsas.com"
+                  href="https://www.fiap.com.br/graduacao/?utm_term=&utm_campaign=GRAD+-+PMax&utm_source=adwords&utm_medium=ppc&hsa_acc=3358810376&hsa_cam=20443108528&hsa_grp=&hsa_ad=&hsa_src=x&hsa_tgt=&hsa_kw=&hsa_mt=&hsa_net=adwords&hsa_ver=3&gad_source=1&gbraid=0AAAAADqmiBC11_F1KwubXQlalfufS8_AZ&gclid=Cj0KCQjw_dbABhC5ARIsAAh2Z-TIVYb3jSskIXuc0TZCH7MMzv0V9_O8Wv-vIMmFS8ydqaiGeibzgCsaAvOZEALw_wcB"
                   target="_blank"
                 >
                   🎓 Programas de bolsas e certificações
@@ -138,7 +138,7 @@ export default function Info() {
               <li>
                 <Link
                   className="hover:underline"
-                  href="https://www.inscricoesonline.com"
+                  href="https://sed.educacao.sp.gov.br/nca/preinscricaoonline/login"
                   target="_blank"
                 >
                   📱 Acompanhamento digital e inscrições online
