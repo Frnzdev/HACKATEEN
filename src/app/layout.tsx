@@ -22,6 +22,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "L.A.R",
   description: "Lugar de Acolhimento e Recomeço",
+  icons: {
+    icon: "/favicon-v2.ico",
+  },
 };
 
 export default function RootLayout({
