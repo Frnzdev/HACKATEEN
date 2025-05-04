@@ -15,7 +15,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="bg-blue-500 backdrop-blur-md p-4 shadow-md dark:bg-zinc-800 ">
+      <header className="bg-blue-500 backdrop-blur-md p-4 shadow-md dark:bg-zinc-800">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex-shrink-0">
@@ -36,7 +36,7 @@ export default function Header() {
             {/* Switch no topo */}
             <ThemeSwitcher />
 
-            {/* Linha com UserButton e botão de menu logo abaixo */}
+            {/* Linha com UserButton e botão de menu */}
             <div className="flex items-center space-x-4">
               <SignedIn>
                 <UserButton
@@ -69,11 +69,12 @@ export default function Header() {
               </button>
             </div>
           </div>
+
           {/* Menu para telas grandes */}
           <div className="hidden md:flex items-center space-x-6">
             <ul className="flex space-x-6 text-white font-semibold p-2">
               <ListaLi linkRoute="/" liTitle="Início" />
-              <ListaLi linkRoute="#news" liTitle="Noticías" />
+              <ListaLi linkRoute="#news" liTitle="Notícias" />
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">
