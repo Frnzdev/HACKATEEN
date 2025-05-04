@@ -8,6 +8,7 @@ import Help from "./components/Help";
 import ThemeProvider from "./providers/theme-provider";
 import BackToTopButton from "./components/BackUp";
 import { AosInit } from "./components/aos-init";
+import Necessidades from "./components/Necessidades";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,6 +45,7 @@ export default function RootLayout({
             <BackToTopButton />
             {children}
             <AosInit />
+            <Necessidades />
             <Footer />
           </ThemeProvider>
         </ClerkProvider>
