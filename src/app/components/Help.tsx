@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { Info, Phone } from "lucide-react"; // ou use react-icons se preferir
+import Link from "next/link";
 
 export default function Help() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,15 +28,21 @@ export default function Help() {
             EM CASO DE EMERGÊNCIA LIGUE:
           </h2>
           <ul className="text-black dark:text-white font-semibold px-4 pb-4 space-y-2">
-            <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
-              190: Polícia Militar
-            </li>
-            <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
-              192: SAMU (Ambulância)
-            </li>
-            <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
-              193: Corpo de Bombeiros
-            </li>
+            <Link href="tel:190">
+              <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
+                190: Polícia Militar
+              </li>
+            </Link>
+            <Link href="tel:192">
+              <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
+                192: SAMU (Ambulância)
+              </li>
+            </Link>
+            <Link href="tel:193">
+              <li className="hover:bg-blue-100 dark:hover:bg-zinc-700 px-4 py-2 rounded transition">
+                193: Corpo de Bombeiros
+              </li>
+            </Link>
           </ul>
         </div>
       )}
