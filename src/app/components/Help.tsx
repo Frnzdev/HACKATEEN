@@ -11,10 +11,10 @@ export default function Help() {
   return (
     <>
       {/* Bolinha fixa no canto inferior direito */}
-      <div className="flex items-center">
+      <div className="fixed bottom-6 right-6 z-50 flex items-center">
         <button
           onClick={OpenMenu}
-          className="fixed duration-200 bottom-6 right-6 bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-lg z-50 flex items-center space-x-2"
+          className="bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-lg flex items-center space-x-2"
           aria-label="Ajuda"
         >
           <Phone size={24} />
@@ -23,8 +23,8 @@ export default function Help() {
       </div>
 
       {isOpen && (
-        <div className="fixed bottom-20 right-6 w-72 bg-white dark:bg-zinc-600 shadow-xl rounded-lg z-50">
-          <h2 className="m-4 font-bold text-black dark:text-white">
+        <div className="fixed bottom-20 right-6 w-72 sm:w-80 md:w-96 bg-white dark:bg-zinc-600 shadow-xl rounded-lg z-50">
+          <h2 className="m-4 font-bold text-black dark:text-white text-lg">
             EM CASO DE EMERGÊNCIA LIGUE:
           </h2>
           <ul className="text-black dark:text-white font-semibold px-4 pb-4 space-y-2">

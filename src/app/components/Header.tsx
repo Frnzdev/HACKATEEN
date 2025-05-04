@@ -108,7 +108,7 @@ export default function Header() {
           <div className="md:hidden bg-blue-300 border border-blue-950 rounded-md backdrop-blur p-4 space-y-4 dark:bg-zinc-600 dark:border-none">
             <ul className="text-white font-semibold">
               <ListaLi linkRoute="/" liTitle="Início" />
-              <ListaLi linkRoute="#news" liTitle="Noticías" />
+              <ListaLi linkRoute="#news" liTitle="Notícias" />
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">
@@ -119,7 +119,14 @@ export default function Header() {
                 </SignedOut>
               </li>
               <li className="transition hover:underline hover:scale-110">
-                {isSignedIn && <Link href="/restricted">Área Restrita</Link>}
+                {isSignedIn && (
+                  <Link
+                    href="/restricted"
+                    className="block py-2 px-4 text-white"
+                  >
+                    Área Restrita
+                  </Link>
+                )}
               </li>
             </ul>
 
