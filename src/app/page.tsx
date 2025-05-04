@@ -5,6 +5,7 @@ import Info from "./components/Info";
 import Mapa from "./components/localizacao";
 
 import SectionFirst from "./components/Section-first";
+import News from "./components/New";
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Converter />
       <MedidaConverter />
       <Mapa />
+      <News />
       <Info />
     </div>
   );
