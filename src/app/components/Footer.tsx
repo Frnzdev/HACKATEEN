@@ -7,8 +7,8 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
         <Image src={"/Logo_OK.png"} alt="Logo" width={100} height={100} />
         <div>
-          <h2 className="text-xl font-bold text-white">RefugiApp</h2>
-          <p className="mt-2 text-sm">Plataforma de ajuda a refugiados.</p>
+          <h2 className="text-xl font-bold text-white">L.A.R</h2>
+          <p className="mt-2 text-sm">Lugar de Acolhimento e Recomeço</p>
         </div>
 
         {/* Links úteis */}
@@ -72,7 +72,7 @@ export default function Footer() {
 
       {/* Direitos autorais */}
       <div className="mt-8 text-center text-xs text-gray-200">
-        &copy; {new Date().getFullYear()} {"<NextCode />"}. Todos os direitos
+        &copy; {new Date().getFullYear()} {"<TheCode />"}. Todos os direitos
         reservados.
       </div>
     </footer>
