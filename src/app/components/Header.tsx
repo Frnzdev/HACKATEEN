@@ -75,6 +75,7 @@ export default function Header() {
             <ul className="flex space-x-6 text-white font-semibold p-2">
               <ListaLi linkRoute="/" liTitle="Início" />
               <ListaLi linkRoute="#news" liTitle="Notícias" />
+              <ListaLi linkRoute="#guide" liTitle="Guia" />
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">
@@ -110,6 +111,7 @@ export default function Header() {
             <ul className="text-white font-semibold">
               <ListaLi linkRoute="/" liTitle="Início" />
               <ListaLi linkRoute="#news" liTitle="Notícias" />
+              <ListaLi linkRoute="#guide" liTitle="Guia" />
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">

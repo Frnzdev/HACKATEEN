@@ -2,7 +2,10 @@
 
 export default function RefugeeGuide() {
   return (
-    <section className="w-full min-h-screen flex items-center justify-center px-6 py-12 bg-gradient-to-r from-white to-blue-400 dark:from-black dark:to-black">
+    <section
+      id="guide"
+      className="w-full min-h-screen flex items-center justify-center px-6 py-12 bg-gradient-to-r from-white to-blue-400 dark:from-black dark:to-black "
+    >
       <div className="max-w-4xl w-full bg-white dark:bg-zinc-900 text-gray-800 dark:text-gray-100 p-8 rounded-lg shadow-lg">
         <h1 className="text-3xl font-bold text-blue-900 dark:text-white mb-6 text-center">
           Guia para Refugiados Recém-Chegados ao Brasil
