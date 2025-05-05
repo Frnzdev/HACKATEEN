@@ -6,6 +6,7 @@ import Mapa from "./components/localizacao";
 
 import SectionFirst from "./components/Section-first";
 import News from "./components/New";
+import RefugeeGuide from "./components/RefugeeGuide";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <Converter />
       <MedidaConverter />
       <Mapa />
+      <RefugeeGuide />
       <News />
       <Info />
     </div>
