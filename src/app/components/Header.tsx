@@ -21,7 +21,7 @@ export default function Header() {
           <div className="flex-shrink-0">
             <Link href={"/"}>
               <Image
-                src="/Logo_OK.png"
+                src="/Logo_Lar.png"
                 width={100}
                 height={100}
                 style={{ width: "100%", height: "auto" }}

@@ -16,10 +16,10 @@ export default function RestrictedPage() {
       {/* Logo */}
       <div className="mb-6">
         <Image
-          src="/Logo_OK.png"
+          src="/Logo_Lar.png"
           alt="Logo Refugiados"
-          width={150}
-          height={150}
+          width={300}
+          height={300}
           className="rounded-full"
         />
       </div>

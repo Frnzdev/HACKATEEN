@@ -176,7 +176,7 @@ export default function Converter() {
               src="/Money.png"
               width={900}
               height={900}
-              style={{ height: "auto", width: "100%" }} // ou fixe com px/rem se quiser tamanho fixo
+              style={{ height: "auto", width: "100%" }}
               alt="Ícone de dinheiro"
             />
           </div>
