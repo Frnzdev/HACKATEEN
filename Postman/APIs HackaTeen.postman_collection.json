@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "a803c080-6752-4602-b23a-808e9dee87dd",
+		"name": "APIs HackaTeen",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44733708",
+		"_collection_link": "https://frnz7-7892076.postman.co/workspace/aca92932-e38a-42fe-8351-bc4514382228/collection/44733708-a803c080-6752-4602-b23a-808e9dee87dd?action=share&source=collection_link&creator=44733708"
+	},
+	"item": [
+		{
+			"name": "Buscar Notícias (NewsData.io)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://newsdata.io/api/1/news?apikey={{NEWSDATA_API_KEY}}&q=tecnologia&language=pt",
+					"protocol": "https",
+					"host": [
+						"newsdata",
+						"io"
+					],
+					"path": [
+						"api",
+						"1",
+						"news"
+					],
+					"query": [
+						{
+							"key": "apikey",
+							"value": "{{NEWSDATA_API_KEY}}"
+						},
+						{
+							"key": "q",
+							"value": "tecnologia"
+						},
+						{
+							"key": "language",
+							"value": "pt"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Conversão de Moeda (API Exemplo)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.apilayer.com/exchangerates_data/convert?to=USD&from=BRL&amount=100&apikey={{CONVERSAO_API_KEY}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"apilayer",
+						"com"
+					],
+					"path": [
+						"exchangerates_data",
+						"convert"
+					],
+					"query": [
+						{
+							"key": "to",
+							"value": "USD"
+						},
+						{
+							"key": "from",
+							"value": "BRL"
+						},
+						{
+							"key": "amount",
+							"value": "100"
+						},
+						{
+							"key": "apikey",
+							"value": "{{CONVERSAO_API_KEY}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Geocodificar Endereço (Google Maps)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://maps.googleapis.com/maps/api/geocode/json?address=Avenida Paulista, São Paulo&key={{GOOGLE_MAPS_API_KEY}}",
+					"protocol": "https",
+					"host": [
+						"maps",
+						"googleapis",
+						"com"
+					],
+					"path": [
+						"maps",
+						"api",
+						"geocode",
+						"json"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "Avenida Paulista, São Paulo"
+						},
+						{
+							"key": "key",
+							"value": "{{GOOGLE_MAPS_API_KEY}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar Sessão (Clerk)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{CLERK_SECRET_KEY}}"
+					}
+				],
+				"url": {
+					"raw": "https://api.clerk.dev/v1/sessions",
+					"protocol": "https",
+					"host": [
+						"api",
+						"clerk",
+						"dev"
+					],
+					"path": [
+						"v1",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "NEWSDATA_API_KEY",
+			"value": "SUA_CHAVE_NEWSDATA"
+		},
+		{
+			"key": "CONVERSAO_API_KEY",
+			"value": "SUA_CHAVE_CONVERSAO"
+		},
+		{
+			"key": "GOOGLE_MAPS_API_KEY",
+			"value": "SUA_CHAVE_GOOGLE"
+		},
+		{
+			"key": "CLERK_SECRET_KEY",
+			"value": "SUA_CHAVE_SECRETA_CLERK"
+		}
+	]
+}
