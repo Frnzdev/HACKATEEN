@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Info, Phone } from "lucide-react"; // ou use react-icons se preferir
+import { Info, Phone } from "lucide-react";
 import Link from "next/link";
 
 export default function Help() {

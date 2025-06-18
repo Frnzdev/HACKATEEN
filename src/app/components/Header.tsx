@@ -74,8 +74,8 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-6">
             <ul className="flex space-x-6 text-white font-semibold p-2">
               <ListaLi linkRoute="/" liTitle="Início" />
-              <ListaLi linkRoute="#news" liTitle="Notícias" />
-              <ListaLi linkRoute="#guide" liTitle="Guia" />
+              <ListaLi linkRoute="/noticias" liTitle="Notícias" />
+              <ListaLi linkRoute="/guia" liTitle="Guia" />
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">
@@ -110,8 +110,8 @@ export default function Header() {
           <div className="md:hidden bg-blue-300 border border-blue-950 rounded-md backdrop-blur p-4 space-y-4 dark:bg-zinc-600 dark:border-none">
             <ul className="text-white font-semibold">
               <ListaLi linkRoute="/" liTitle="Início" />
-              <ListaLi linkRoute="#news" liTitle="Notícias" />
-              <ListaLi linkRoute="#guide" liTitle="Guia" />
+              <ListaLi linkRoute="/noticias" liTitle="Notícias" />
+              <ListaLi linkRoute="/guia" liTitle="Guia" />
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">
