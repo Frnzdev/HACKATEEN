@@ -1,51 +1,32 @@
 "use client";
 
+import { fetchNews, NewsProps } from "@/api/news";
 import { useState, useEffect } from "react";
 
-// Tipo para os artigos retornados pela API
-type Article = {
-  title: string;
-  description: string;
-  link: string;
-};
-
-const API_KEY = process.env.NEXT_PUBLIC_NEWSDATA_API_KEY;
-
-const fetchNews = async (): Promise<Article[]> => {
-  try {
-    const url = `https://newsdata.io/api/1/news?apikey=${API_KEY}&q=refugiados&language=pt`;
-    const response = await fetch(url);
-    const data = await response.json();
-
-    if (Array.isArray(data.results)) {
-      // Filtra apenas artigos com título e descrição válidos
-      return data.results.filter(
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (item: any) => item.title && item.description && item.link
-      ) as Article[];
-    } else {
-      console.error("Formato inesperado da resposta:", data);
-      return [];
-    }
-  } catch (error) {
-    console.error("Erro ao buscar notícias:", error);
-    return [];
-  }
-};
-
 export default function News() {
-  const [articles, setArticles] = useState<Article[]>([]);
+  const [articles, setArticles] = useState<NewsProps[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const getArticles = async () => {
-      const news = await fetchNews();
-      setArticles(news);
-      setLoading(false);
+    const getNews = async () => {
+      try {
+        const data = await fetchNews();
+        setArticles(data.results); // <-- Pega os artigos retornados da API
+        if (data && Array.isArray(data.results)) {
+          setArticles(data.results);
+        } else {
+          setArticles([]);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar notícias:", error);
+        setArticles([]);
+      } finally {
+        setLoading(false); // <-- Para de mostrar o loading, independente de erro ou sucesso
+      }
     };
 
-    getArticles();
-  }, []);
+    getNews(); // Chama a função quando o componente monta
+  }, []); // <-- Array vazio = roda apenas 1 vez quando o componente for montado
 
   return (
     <div
@@ -74,6 +55,7 @@ export default function News() {
               key={index}
               className="news-item bg-white p-5 rounded-lg shadow-lg dark:bg-zinc-800 dark:text-white overflow-hidden transform hover:scale-105 transition-all duration-200"
             >
+              <img src={article.image_url} alt={article.title} />
               <h2 className="text-xl font-semibold mb-2 text-blue-900 dark:text-white">
                 {article.title}
               </h2>

@@ -24,7 +24,12 @@ export default function CountrySelector() {
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
-      .then((data: ApiCountry[]) => {
+      .then((data) => {
+        if (!Array.isArray(data)) {
+          console.error("Formato inesperado da API:", data);
+          return;
+        }
+
         const sorted = data
           .map((country: ApiCountry) => ({
             name: country.name.common,
@@ -36,6 +41,9 @@ export default function CountrySelector() {
 
         setCountries(sorted);
         setSelected(sorted.find((c) => c.code === "BR") || null);
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar países:", error);
       })
       .finally(() => setLoading(false));
   }, []);
@@ -67,7 +75,7 @@ export default function CountrySelector() {
             ) : (
               <span>Selecione um país</span>
             )}
-            {/* Chevron Down como SVG inline */}
+            {/* Chevron */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="ml-2 h-5 w-5 text-gray-400"
