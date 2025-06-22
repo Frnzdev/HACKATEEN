@@ -10,6 +10,12 @@ interface Country {
   code: string;
 }
 
+interface ApiCountry {
+  name: { common: string };
+  flags?: { png?: string; svg?: string };
+  cca2: string;
+}
+
 export default function CountrySelector() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [selected, setSelected] = useState<Country | null>(null);
@@ -18,9 +24,9 @@ export default function CountrySelector() {
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
-      .then((data) => {
+      .then((data: ApiCountry[]) => {
         const sorted = data
-          .map((country: any) => ({
+          .map((country: ApiCountry) => ({
             name: country.name.common,
             flag: country.flags?.png ?? country.flags?.svg ?? "",
             code: country.cca2,
@@ -36,7 +42,7 @@ export default function CountrySelector() {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center">
+      <div className="flex justify-center items-center h-32">
         <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-500 border-t-transparent"></div>
       </div>
     );
