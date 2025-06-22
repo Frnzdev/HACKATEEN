@@ -1,4 +1,5 @@
 "use client";
+
 import { useEffect, useState, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
@@ -12,25 +13,34 @@ interface Country {
 export default function CountrySelector() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [selected, setSelected] = useState<Country | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://restcountries.com/v3.1/all")
       .then((res) => res.json())
       .then((data) => {
         const sorted = data
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           .map((country: any) => ({
             name: country.name.common,
-            flag: country.flags.png,
+            flag: country.flags?.png ?? country.flags?.svg ?? "",
             code: country.cca2,
           }))
+          .filter((country: Country) => country.flag)
           .sort((a: Country, b: Country) => a.name.localeCompare(b.name));
+
         setCountries(sorted);
-        setSelected(
-          sorted.find((c: { code: string }) => c.code === "BR") || null
-        );
-      });
+        setSelected(sorted.find((c) => c.code === "BR") || null);
+      })
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center">
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-500 border-t-transparent"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="w-full max-w-md mx-auto">
