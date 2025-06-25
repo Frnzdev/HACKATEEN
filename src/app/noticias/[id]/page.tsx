@@ -3,11 +3,12 @@
 import { useNews } from "@/app/hooks/useNews";
 import Loading from "@/components/Loading";
 import Link from "next/link";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 export default function DetailSNews() {
   const { articles, loading } = useNews();
   const { id } = useParams();
+  const router = useRouter();
 
   if (loading) {
     return <Loading />;
@@ -26,51 +27,60 @@ export default function DetailSNews() {
   return (
     <div className="min-h-screen py-12 px-6 md:px-24 bg-gradient-to-br from-white to-blue-100 dark:from-black dark:to-zinc-900 dark:text-white">
       <div className="max-w-3xl mx-auto bg-white dark:bg-zinc-800 rounded-2xl shadow-xl overflow-hidden border dark:border-zinc-700">
-        <div className="flex flex-col md:flex-row items-start p-6 gap-6">
-          {article.image_url && (
-            <div className="relative w-full md:w-64">
-              {/* Imagem */}
-              <img
-                src={article.image_url}
-                alt={article.title}
-                className="w-full h-40 object-cover rounded-lg shadow-md"
+        {/* Botão de voltar */}
+        <div className="p-4">
+          <button
+            onClick={() => router.back()}
+            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-600 font-semibold cursor-pointer"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-5 w-5"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M15 19l-7-7 7-7"
               />
+            </svg>
+            Voltar
+          </button>
+        </div>
 
-              {/* Botão embaixo da imagem (somente em telas md+) */}
-              {article.link && (
-                <a
-                  href={article.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hidden md:block mt-4 text-center px-5 py-2 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition w-full"
-                >
-                  Leia mais na fonte
-                </a>
-              )}
-            </div>
+        {/* Imagem em cima */}
+        {article.image_url && (
+          // eslint-disable-next-line @next/next/no-img-element
+          <img
+            src={article.image_url}
+            alt={article.title}
+            className="w-full h-64 object-cover rounded-t-2xl shadow-md"
+          />
+        )}
+
+        {/* Conteúdo abaixo da imagem */}
+        <div className="p-6 flex flex-col">
+          <h1 className="text-2xl md:text-3xl font-bold text-blue-900 dark:text-blue-300 mb-4">
+            {article.title}
+          </h1>
+          <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg mb-6 leading-relaxed">
+            {article.description || "Sem descrição disponível."}
+          </p>
+
+          {/* Botão Leia mais */}
+          {article.link && (
+            <Link
+              href={article.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-6 py-3 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition max-w-max"
+            >
+              Leia mais na fonte
+            </Link>
           )}
-
-          {/* Conteúdo da notícia */}
-          <div className="flex-1">
-            <h1 className="text-2xl md:text-3xl font-bold text-blue-900 dark:text-blue-300 mb-3">
-              {article.title}
-            </h1>
-            <p className="text-gray-700 dark:text-gray-300 text-base md:text-lg mb-4 leading-relaxed">
-              {article.description || "Sem descrição disponível."}
-            </p>
-
-            {/* Botão visível apenas em telas menores */}
-            {article.link && (
-              <Link
-                href={article.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block md:hidden mt-4 text-center px-5 py-2 rounded-xl bg-blue-600 text-white font-medium hover:bg-blue-700 transition w-full"
-              >
-                Leia mais na fonte
-              </Link>
-            )}
-          </div>
         </div>
       </div>
     </div>
