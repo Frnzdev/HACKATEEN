@@ -3,17 +3,12 @@
 import { useEffect, useState, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
+import { fetchCountries, ApiCountry } from "@/api/country";
 
 interface Country {
   name: string;
   flag: string;
   code: string;
-}
-
-interface ApiCountry {
-  name: { common: string };
-  flags?: { png?: string; svg?: string };
-  cca2: string;
 }
 
 export default function CountrySelector() {
@@ -22,36 +17,34 @@ export default function CountrySelector() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v3.1/all")
-      .then((res) => res.json())
-      .then((data) => {
-        if (!Array.isArray(data)) {
-          console.error("Formato inesperado da API:", data);
-          return;
-        }
+    const getCountries = async () => {
+      try {
+        const data = await fetchCountries();
 
-        const sorted = data
+        const formattedCountries = data
           .map((country: ApiCountry) => ({
             name: country.name.common,
-            flag: country.flags?.png ?? country.flags?.svg ?? "",
+            flag: country.flags?.png || country.flags?.svg || "",
             code: country.cca2,
           }))
-          .filter((country: Country) => country.flag)
-          .sort((a: Country, b: Country) => a.name.localeCompare(b.name));
+          .filter((country) => country.flag);
 
-        setCountries(sorted);
-        setSelected(sorted.find((c) => c.code === "BR") || null);
-      })
-      .catch((error) => {
+        setCountries(formattedCountries);
+        setSelected(formattedCountries.find((c) => c.code === "BR") || null);
+      } catch (error) {
         console.error("Erro ao buscar países:", error);
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    getCountries();
   }, []);
 
   if (loading) {
     return (
       <div className="flex justify-center items-center h-32">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-500 border-t-transparent"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
       </div>
     );
   }
@@ -75,7 +68,6 @@ export default function CountrySelector() {
             ) : (
               <span>Selecione um país</span>
             )}
-            {/* Chevron */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="ml-2 h-5 w-5 text-gray-400"

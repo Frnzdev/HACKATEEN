@@ -32,7 +32,7 @@ export default function SectionFirst() {
             <div className="relative">
               <Link href='/conversoes'>
               <button
-                className="bg-blue-800 text-white px-6 py-2 rounded-full hover:bg-blue-500 text-center dark:bg-black/50 dark:text-white dark:border dark:border-white dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
+                className="bg-blue-800 text-white px-6 py-2 rounded-full hover:bg-blue-500 text-center cursor-pointer dark:bg-black/50 dark:text-white dark:border dark:border-white dark:hover:bg-gray-200 duration-200 dark:hover:text-black"
               >
                 Conversão
               </button>

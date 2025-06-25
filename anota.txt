@@ -1,0 +1,2 @@
+1- pedir ajuda com api de bandeiras, nao esta funcionando e esta com erro 
+2- pedir ajuda com internacionalização, nao entendi
