@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌍 Global Core - **L.A.R**
 
-## Getting Started
+### **Lugar de Acolhimento e Recomeço**
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 📝 **Sobre o Projeto**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Este projeto, **L.A.R (Lugar de Acolhimento e Recomeço)**, foi desenvolvido por estudantes da **ETEC de Heliópolis Arquiteto Ruy Ohtake** como parte de sua formação técnica.  
+O objetivo principal é criar um espaço de acolhimento para **imigrantes recém-chegados ao Brasil**, oferecendo **suporte essencial para as dificuldades do dia a dia**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👥 **Integrantes da Equipe**
 
-## Learn More
+- **Ana Luiza Bertarelli**: Líder e Analista de Sistemas
+- **Felipe Alves Fornazeiro**: Desenvolvedor Full Stack
+- **Michelly Silva Moreira**: Designer UX/UI
+- **Samyra Alves Oliveira**: Analista de Sistemas
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🧰 **Tecnologias Utilizadas**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### 🔹 **Frontend**
 
-## Deploy on Vercel
+- HTML
+- CSS / Tailwind CSS
+- JavaScript
+- React
+- Next.js
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 🔹 **Backend**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Node.js
+
+### 🔹 **Autenticação**
+
+- Clerk (para gerenciamento de cadastro e login de usuários)
+
+### 🔹 **API Externa**
+
+- API Newsdata (para integração de notícias)
+
+---
+
+## ⚙️ **Setup Local**
+
+### ✅ **Pré-requisitos**
+
+- Node.js (versão LTS recomendada)
+- npm (geralmente vem com o Node.js) ou Yarn
+
+---
+
+### 📦 **Passos Comuns (Windows, macOS, Linux)**
+
+1. **Instale as Dependências**  
+   Navegue até o diretório raiz do projeto e instale todas as dependências necessárias:
+
+   ```bash
+   npm install
+   npm run dev
+   ```

@@ -5,10 +5,8 @@ import { useNews } from "../hooks/useNews";
 import Loading from "@/components/Loading";
 import Recharge from "../components/Recharge";
 
-
 export default function News() {
   const { articles, loading, refetch } = useNews();
-
 
   if (loading) {
     return <Loading />;
@@ -40,13 +38,17 @@ export default function News() {
               <Link
                 href={`/noticias/${encodeURIComponent(article.article_id)}`}
               >
-                {article.image_url && (
+                {article.image_url ? (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={article.image_url ? article.image_url : "No images"}
+                    src={article.image_url}
                     alt={article.title}
                     className="mb-3 w-full h-40 object-cover rounded"
                   />
+                ) : (
+                  <div className="mb-3 w-full h-40 flex items-center justify-center bg-gray-200 dark:bg-zinc-700 text-gray-500 dark:text-gray-400 rounded">
+                    Sem imagem
+                  </div>
                 )}
                 <h2 className="text-xl font-semibold mb-2 text-blue-900 dark:text-white">
                   {article.title}
