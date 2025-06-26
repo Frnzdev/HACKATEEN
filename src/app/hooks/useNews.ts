@@ -7,25 +7,26 @@ export function useNews() {
   const [articles, setArticles] = useState<NewsProps[]>([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const getNews = async () => {
-      try {
-        const data = await fetchNews();
-        if (data && Array.isArray(data.results)) {
-          setArticles(data.results);
-        } else {
-          setArticles([]);
-        }
-      } catch (error) {
-        console.error("Erro ao buscar notícias:", error);
+  const getNews = async () => {
+    setLoading(true);
+    try {
+      const data = await fetchNews();
+      if (data && Array.isArray(data.results)) {
+        setArticles(data.results);
+      } else {
         setArticles([]);
-      } finally {
-        setLoading(false);
       }
-    };
+    } catch (error) {
+      console.error("Erro ao buscar notícias:", error);
+      setArticles([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     getNews();
   }, []);
 
-  return { articles, loading };
+  return { articles, loading, refetch: getNews }; // 👈 Adiciona o `refetch`
 }

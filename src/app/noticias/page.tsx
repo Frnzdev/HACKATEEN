@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { useNews } from "../hooks/useNews";
 import Loading from "@/components/Loading";
+import Recharge from "../components/Recharge";
+
 
 export default function News() {
-  const { articles, loading } = useNews();
+  const { articles, loading, refetch } = useNews();
+
 
   if (loading) {
     return <Loading />;
@@ -56,6 +59,9 @@ export default function News() {
           ))}
         </div>
       )}
+      <div className="flex justify-center mt-12">
+        <Recharge onClick={refetch}>Atualizar as Noticias</Recharge>
+      </div>
     </div>
   );
 }

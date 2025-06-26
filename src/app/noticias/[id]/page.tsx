@@ -1,5 +1,6 @@
 "use client";
 
+import Recharge from "@/app/components/Recharge";
 import { useNews } from "@/app/hooks/useNews";
 import Loading from "@/components/Loading";
 import Link from "next/link";
@@ -29,17 +30,14 @@ export default function DetailSNews() {
       <div className="max-w-3xl mx-auto bg-white dark:bg-zinc-800 rounded-2xl shadow-xl overflow-hidden border dark:border-zinc-700">
         {/* Botão de voltar */}
         <div className="p-4">
-          <button
-            onClick={() => router.back()}
-            className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-600 font-semibold cursor-pointer"
-          >
+          <Recharge onClick={() => router.back()}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-              strokeWidth={2}
+              strokeWidth={6}
             >
               <path
                 strokeLinecap="round"
@@ -47,8 +45,7 @@ export default function DetailSNews() {
                 d="M15 19l-7-7 7-7"
               />
             </svg>
-            Voltar
-          </button>
+          </Recharge>
         </div>
 
         {/* Imagem em cima */}
