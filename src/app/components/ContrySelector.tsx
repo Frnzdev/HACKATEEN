@@ -3,36 +3,37 @@
 import { useEffect, useState, Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Image from "next/image";
-import { fetchCountries, ApiCountry } from "@/api/country";
-
-interface Country {
-  name: string;
-  flag: string;
-  code: string;
-}
+import { ApiCountry, Country, fetchCountries } from "@/api/country";
 
 export default function CountrySelector() {
   const [countries, setCountries] = useState<Country[]>([]);
   const [selected, setSelected] = useState<Country | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null); // Estado de erro adicionado
 
   useEffect(() => {
+    // CORREÇÃO AQUI: Adicione ?fields=name,flags à URL
     const getCountries = async () => {
       try {
         const data = await fetchCountries();
-
-        const formattedCountries = data
+        const sorted = data
           .map((country: ApiCountry) => ({
             name: country.name.common,
-            flag: country.flags?.png || country.flags?.svg || "",
-            code: country.cca2,
+            flag: country.flags?.png ?? country.flags?.svg ?? "",
+            code: country.cca2, // Certifique-se que 'cca2' está nos fields acima
           }))
-          .filter((country) => country.flag);
+          .filter((country: Country) => country.flag)
+          .sort((a: Country, b: Country) => a.name.localeCompare(b.name));
 
-        setCountries(formattedCountries);
-        setSelected(formattedCountries.find((c) => c.code === "BR") || null);
-      } catch (error) {
+        setCountries(sorted);
+        setSelected(sorted.find((c) => c.code === "BR") || null);
+        setError(null);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } catch (error: any) {
         console.error("Erro ao buscar países:", error);
+        setError(`Erro ao carregar países: ${error.message}.`);
+        setCountries([]);
+        setSelected(null);
       } finally {
         setLoading(false);
       }
@@ -44,7 +45,16 @@ export default function CountrySelector() {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-32">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-solid border-blue-500 border-t-transparent"></div>
+      </div>
+    );
+  }
+
+  // Exibe a mensagem de erro se houver
+  if (error) {
+    return (
+      <div className="w-full max-w-md mx-auto text-center text-red-500 p-4 rounded-md bg-white/10 dark:bg-zinc-800/50">
+        {error}
       </div>
     );
   }
@@ -68,6 +78,7 @@ export default function CountrySelector() {
             ) : (
               <span>Selecione um país</span>
             )}
+            {/* Chevron */}
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="ml-2 h-5 w-5 text-gray-400"
@@ -119,6 +130,7 @@ export default function CountrySelector() {
           </Menu.Items>
         </Transition>
       </Menu>
+         
     </div>
   );
 }
