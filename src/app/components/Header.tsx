@@ -76,7 +76,7 @@ export default function Header() {
               <ListaLi linkRoute="/" liTitle="Início" />
               <ListaLi linkRoute="/noticias" liTitle="Notícias" />
               <ListaLi linkRoute="/guia" liTitle="Guia" />
-              <li className="transition hover:underline hover:scale-110">
+              <li className="transition hover:underline hover:scale-110 cursor-pointer">
                 <SignedOut>
                   <SignInButton mode="modal">
                     <span className="transition hover:underline hover:scale-110">

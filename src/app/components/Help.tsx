@@ -14,7 +14,7 @@ export default function Help() {
       <div className="fixed bottom-6 right-6 z-50 flex items-center">
         <button
           onClick={OpenMenu}
-          className="bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-lg flex items-center space-x-2"
+          className="bg-red-600 hover:bg-red-700 text-white p-4 rounded-full shadow-lg flex items-center space-x-2  cursor-pointer"
           aria-label="Ajuda"
         >
           <Phone size={24} />

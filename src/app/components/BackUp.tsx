@@ -33,7 +33,7 @@ export default function BackToTopButton() {
     isVisible && (
       <button
         onClick={scrollToTop}
-        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-blue-800 text-white p-3 rounded-full shadow-lg hover:bg-blue-500 focus:outline-none z-999 duration-150 dark:bg-zinc-900 dark:hover:bg-gray-400 dark:hover:text-black"
+        className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-blue-800 text-white p-3 rounded-full shadow-lg hover:bg-blue-500 focus:outline-none z-999 duration-150 dark:bg-zinc-900 dark:hover:bg-gray-400 dark:hover:text-black cursor-pointer"
         aria-label="Voltar ao topo"
       >
         <ArrowUpCircle size={24} />

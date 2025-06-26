@@ -51,16 +51,6 @@ export default function News() {
                 <p className="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
                   Clique para ver os detalhes
                 </p>
-                {article.link && (
-                  <Link
-                    href={article.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:underline dark:text-blue-400"
-                  >
-                    Leia mais
-                  </Link>
-                )}
               </Link>
             </div>
           ))}
