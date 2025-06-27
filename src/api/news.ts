@@ -12,7 +12,7 @@ interface NewsApiResponse {
 
 export const fetchNews = async (): Promise<NewsApiResponse> => {
   const res = await fetch(
-    "https://newsdata.io/api/1/latest?apikey=pub_7cb1233e86614bde8dfba325752b04f6&qInTitle=Refugiados"
+    "https://newsdata.io/api/1/latest?apikey=pub_7cb1233e86614bde8dfba325752b04f6&qInTitle=Refugiados&language=pt"
   );
   const data: NewsApiResponse = await res.json();
   return data;
