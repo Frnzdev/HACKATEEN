@@ -76,20 +76,22 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-6">
             <ul className="flex space-x-6 text-white font-semibold p-2">
               {/* 3. Substituir textos fixos por chaves de tradução */}
-              <ListaLi linkRoute="/" liTitle={t('Header.home')} />
-              <ListaLi linkRoute="/noticias" liTitle={t('Header.news')} />
-              <ListaLi linkRoute="/guia" liTitle={t('Header.guide')} />
+              <ListaLi linkRoute="/" liTitle={t("Header.home")} />
+              <ListaLi linkRoute="/noticias" liTitle={t("Header.news")} />
+              <ListaLi linkRoute="/guia" liTitle={t("Header.guide")} />
+              <li className="transition hover:underline hover:scale-110">
+                {isSignedIn && (
+                  <Link href="/restricted">{t("Header.restricted_area")}</Link>
+                )}
+              </li>
               <li className="transition hover:underline hover:scale-110 cursor-pointer">
                 <SignedOut>
                   <SignInButton mode="modal">
                     <span className="transition hover:underline hover:scale-110">
-                      {t('Header.login')}
+                      {t("Header.login")}
                     </span>
                   </SignInButton>
                 </SignedOut>
-              </li>
-              <li className="transition hover:underline hover:scale-110">
-                {isSignedIn && <Link href="/restricted">{t('Header.restricted_area')}</Link>}
               </li>
             </ul>
 
@@ -111,28 +113,23 @@ export default function Header() {
         {/* Menu Mobile (Visível apenas em telas pequenas) */}
         {isMenuOpen && (
           <div className="md:hidden bg-blue-300 border border-blue-950 rounded-md backdrop-blur p-4 space-y-4 dark:bg-zinc-600 dark:border-none">
-            <ul className="text-white font-semibold">
-              <ListaLi linkRoute="/" liTitle={t('Header.home')} />
-              <ListaLi linkRoute="/noticias" liTitle={t('Header.news')} />
-              <ListaLi linkRoute="/guia" liTitle={t('Header.guide')} />
+            <ul className="text-white font-semibold items-center">
+              <ListaLi linkRoute="/" liTitle={t("Header.home")} />
+              <ListaLi linkRoute="/noticias" liTitle={t("Header.news")} />
+              <ListaLi linkRoute="/guia" liTitle={t("Header.guide")} />
+              <li className="transition hover:underline hover:scale-110">
+                {isSignedIn && (
+                  <Link href="/restricted">{t("Header.restricted_area")}</Link>
+                )}
+              </li>
               <li className="transition hover:underline hover:scale-110">
                 <SignedOut>
                   <SignInButton mode="modal">
                     <span className="transition hover:underline hover:scale-110">
-                      {t('Header.login')}
+                      {t("Header.login")}
                     </span>
                   </SignInButton>
                 </SignedOut>
-              </li>
-              <li className="transition hover:underline hover:scale-110">
-                {isSignedIn && (
-                  <Link
-                    href="/restricted"
-                    className="block py-2 px-4 text-white"
-                  >
-                    {t('Header.restricted_area')}
-                  </Link>
-                )}
               </li>
             </ul>
 

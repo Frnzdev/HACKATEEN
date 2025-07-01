@@ -22,7 +22,9 @@ export default function Mapa() {
   });
   const { t } = useTranslation();
 
-  const [position, setPosition] = useState<{ lat: number; lng: number } | null>(null);
+  const [position, setPosition] = useState<{ lat: number; lng: number } | null>(
+    null
+  );
   const [isClick, setIsClicked] = useState(false);
 
   useEffect(() => {
@@ -41,14 +43,20 @@ export default function Mapa() {
 
   if (!isLoaded || !position) {
     return (
-      <section id="localizacao" className="flex items-center justify-center w-full h-screen bg-white">
+      <section
+        id="localizacao"
+        className="flex items-center justify-center w-full h-screen bg-white"
+      >
         <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" />
       </section>
     );
   }
 
   return (
-    <section id="localizacao" className="bg-gradient-to-r from-white to-blue-400 w-full h-screen dark:from-black dark:to-black/90">
+    <section
+      id="localizacao"
+      className="bg-gradient-to-r from-white to-blue-400 w-full h-screen dark:from-black dark:to-black/90"
+    >
       {isClick ? (
         <div className="relative w-full h-full">
           <GoogleMap
@@ -63,7 +71,9 @@ export default function Mapa() {
         </div>
       ) : (
         <div className="pt-6 flex flex-col justify-center items-center">
-          <h1 className="font-bold text-2xl mt-2 mb-4">{t('Location.page_title')}</h1>
+          <h1 className="font-bold text-2xl mt-2 mb-4">
+            {t("Location.page_title")}
+          </h1>
           <div className="w-[400px] h-[400px] sm:w-[300px] sm:h-[300px] xs:w-[250px] xs:h-[250px]">
             <GoogleMap
               onClick={clickHandle}
@@ -74,11 +84,6 @@ export default function Mapa() {
             >
               <Marker position={position} />
             </GoogleMap>
-          </div>
-          <div>
-            <p className="mt-6">
-              {t('Location.you_are_at', { lat: position.lat.toFixed(4), lng: position.lng.toFixed(4) })}
-            </p>
           </div>
         </div>
       )}
