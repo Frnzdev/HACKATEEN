@@ -1,0 +1,10 @@
+-tentar tradução - NAO DÁ?
+-fazer a página de utilidades - começando 
+-página inicial "atrativo" como se fosse uma página sobre 
+
+
+
+DUVIDAS - 
+TUDO SOBRE internacionalização
+é importante ter o componente das bandeiras? nao tera finalidade
+pedir para ele ver se eu fiz o hook certo 
