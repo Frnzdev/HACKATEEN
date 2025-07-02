@@ -2,19 +2,18 @@
 import { useUser } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import LanguageSelector from "./LanguageSelector"; // Corrigido o nome do componente importado
+import LanguageSelector from "./LanguageSelector";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import { useState } from "react";
 import ThemeSwitcher from "./themeSwitcher";
 import ListaLi from "./ListaLi";
-import { useTranslation } from "react-i18next"; // 1. Importar o hook de tradução
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
-  const { t } = useTranslation(); // 2. Iniciar o hook para obter a função 't'
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isSignedIn } = useUser();
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-
   return (
     <>
       <header className="bg-blue-500 backdrop-blur-md p-4 shadow-md dark:bg-zinc-800">
@@ -79,6 +78,12 @@ export default function Header() {
               <ListaLi linkRoute="/" liTitle={t("Header.home")} />
               <ListaLi linkRoute="/noticias" liTitle={t("Header.news")} />
               <ListaLi linkRoute="/guia" liTitle={t("Header.guide")} />
+
+              <ListaLi
+                linkRoute="https://globarcore.netlify.app/"
+                liTitle={t("Footer.about_us")}
+                target="_blank"
+              />
               <li className="transition hover:underline hover:scale-110">
                 {isSignedIn && (
                   <Link href="/restricted">{t("Header.restricted_area")}</Link>
@@ -117,6 +122,10 @@ export default function Header() {
               <ListaLi linkRoute="/" liTitle={t("Header.home")} />
               <ListaLi linkRoute="/noticias" liTitle={t("Header.news")} />
               <ListaLi linkRoute="/guia" liTitle={t("Header.guide")} />
+              <ListaLi
+                linkRoute="https://globarcore.netlify.app/"
+                liTitle={t("Header.about")}
+              />
               <li className="transition hover:underline hover:scale-110">
                 {isSignedIn && (
                   <Link href="/restricted">{t("Header.restricted_area")}</Link>
