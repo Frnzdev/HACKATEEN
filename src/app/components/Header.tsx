@@ -124,7 +124,8 @@ export default function Header() {
               <ListaLi linkRoute="/guia" liTitle={t("Header.guide")} />
               <ListaLi
                 linkRoute="https://globarcore.netlify.app/"
-                liTitle={t("Header.about")}
+                liTitle={t("Footer.about_us")}
+                target="_blank"
               />
               <li className="transition hover:underline hover:scale-110">
                 {isSignedIn && (
