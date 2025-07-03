@@ -62,3 +62,23 @@ O objetivo principal é criar um espaço de acolhimento para **imigrantes recém
    npm install
    npm run dev
    ```
+ ou, se preferir usar Yarn:
+ ```bash
+# yarn install
+```
+ 2. **Inicie o Servidor de Desenvolvimento**
+   Após instalar as dependências e configurar as variáveis de ambiente, você pode iniciar o servidor de desenvolvimento:
+```bash
+   npm run dev
+```
+ ou:
+ ```bash
+yarn dev
+```
+
+   Isso iniciará o aplicativo em http://localhost:3000
+
+
+
+
+   
