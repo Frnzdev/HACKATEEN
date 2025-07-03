@@ -18,7 +18,7 @@ const noClickStyle = {
 
 export default function Mapa() {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: process.env.NEXT_PUBLIC_Maps_API_KEY || "",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_Maps_API_KEY || "AIzaSyDJBmRl9fOgCfbzvwdXGilacgeamgwTBVw",
   });
   const { t } = useTranslation();
 
