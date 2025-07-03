@@ -56,29 +56,38 @@ O objetivo principal é criar um espaço de acolhimento para **imigrantes recém
 ### 📦 **Passos Comuns (Windows, macOS, Linux)**
 
 1. **Instale as Dependências**  
-   Navegue até o diretório raiz do projeto e instale todas as dependências necessárias:
+    Navegue até o diretório raiz do projeto e instale todas as dependências necessárias:
 
    ```bash
    npm install
    npm run dev
    ```
- ou, se preferir usar Yarn:
- ```bash
+
+   ou, se preferir usar Yarn:
+
+```bash
 # yarn install
 ```
- 2. **Inicie o Servidor de Desenvolvimento**
-   Após instalar as dependências e configurar as variáveis de ambiente, você pode iniciar o servidor de desenvolvimento:
+
+2.  **Inicie o Servidor de Desenvolvimento**
+    Após instalar as dependências e configurar as variáveis de ambiente, você pode iniciar o servidor de desenvolvimento:
+
 ```bash
    npm run dev
 ```
- ou:
- ```bash
+
+ou:
+
+```bash
 yarn dev
 ```
 
-   Isso iniciará o aplicativo em http://localhost:3000
+Isso iniciará o aplicativo em http://localhost:3000
 
+---
 
+## 📝 **Link do Projeto - Vercel**
 
+https://hackateen-tawny.vercel.app/
 
-   
+---
